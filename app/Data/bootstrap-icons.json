@@ -1,0 +1,944 @@
+{
+  "icons": [
+    {
+      "class": "bi bi-house",
+      "name": "House",
+      "emoji": "🏠"
+    },
+    {
+      "class": "bi bi-house-door",
+      "name": "House Door",
+      "emoji": "🏠"
+    },
+    {
+      "class": "bi bi-building",
+      "name": "Building",
+      "emoji": "🏢"
+    },
+    {
+      "class": "bi bi-buildings",
+      "name": "Buildings",
+      "emoji": "🏢"
+    },
+    {
+      "class": "bi bi-apple",
+      "name": "Apple",
+      "emoji": "🍎"
+    },
+    {
+      "class": "bi bi-gear",
+      "name": "Gear",
+      "emoji": "⚙️"
+    },
+    {
+      "class": "bi bi-gear-fill",
+      "name": "Gear Fill",
+      "emoji": "⚙️"
+    },
+    {
+      "class": "bi bi-gears",
+      "name": "Gears",
+      "emoji": "⚙️"
+    },
+    {
+      "class": "bi bi-code",
+      "name": "Code",
+      "emoji": "💻"
+    },
+    {
+      "class": "bi bi-code-slash",
+      "name": "Code Slash",
+      "emoji": "💻"
+    },
+    {
+      "class": "bi bi-code-square",
+      "name": "Code Square",
+      "emoji": "💻"
+    },
+    {
+      "class": "bi bi-terminal",
+      "name": "Terminal",
+      "emoji": "💻"
+    },
+    {
+      "class": "bi bi-terminal-fill",
+      "name": "Terminal Fill",
+      "emoji": "💻"
+    },
+    {
+      "class": "bi bi-phone",
+      "name": "Phone",
+      "emoji": "📱"
+    },
+    {
+      "class": "bi bi-phone-fill",
+      "name": "Phone Fill",
+      "emoji": "📱"
+    },
+    {
+      "class": "bi bi-tablet",
+      "name": "Tablet",
+      "emoji": "📱"
+    },
+    {
+      "class": "bi bi-laptop",
+      "name": "Laptop",
+      "emoji": "💻"
+    },
+    {
+      "class": "bi bi-laptop-fill",
+      "name": "Laptop Fill",
+      "emoji": "💻"
+    },
+    {
+      "class": "bi bi-display",
+      "name": "Display",
+      "emoji": "🖥️"
+    },
+    {
+      "class": "bi bi-pc-display",
+      "name": "PC Display",
+      "emoji": "🖥️"
+    },
+    {
+      "class": "bi bi-pc-display-horizontal",
+      "name": "PC Horizontal",
+      "emoji": "🖥️"
+    },
+    {
+      "class": "bi bi-keyboard",
+      "name": "Keyboard",
+      "emoji": "⌨️"
+    },
+    {
+      "class": "bi bi-mouse",
+      "name": "Mouse",
+      "emoji": "🖱️"
+    },
+    {
+      "class": "bi bi-printer",
+      "name": "Printer",
+      "emoji": "🖨️"
+    },
+    {
+      "class": "bi bi-printer-fill",
+      "name": "Printer Fill",
+      "emoji": "🖨️"
+    },
+    {
+      "class": "bi bi-cpu",
+      "name": "CPU",
+      "emoji": "🔲"
+    },
+    {
+      "class": "bi bi-cpu-fill",
+      "name": "CPU Fill",
+      "emoji": "🔲"
+    },
+    {
+      "class": "bi bi-gpu-card",
+      "name": "GPU Card",
+      "emoji": "🎮"
+    },
+    {
+      "class": "bi bi-memory",
+      "name": "Memory",
+      "emoji": "💾"
+    },
+    {
+      "class": "bi bi-motherboard",
+      "name": "Motherboard",
+      "emoji": "🔲"
+    },
+    {
+      "class": "bi bi-usb-drive",
+      "name": "USB Drive",
+      "emoji": "💾"
+    },
+    {
+      "class": "bi bi-disc",
+      "name": "Disc",
+      "emoji": "💿"
+    },
+    {
+      "class": "bi bi-hdd",
+      "name": "HDD",
+      "emoji": "💾"
+    },
+    {
+      "class": "bi bi-hdd-network",
+      "name": "HDD Network",
+      "emoji": "💾"
+    },
+    {
+      "class": "bi bi-palette",
+      "name": "Palette",
+      "emoji": "🎨"
+    },
+    {
+      "class": "bi bi-palette-fill",
+      "name": "Palette Fill",
+      "emoji": "🎨"
+    },
+    {
+      "class": "bi bi-pen",
+      "name": "Pen",
+      "emoji": "✏️"
+    },
+    {
+      "class": "bi bi-pencil",
+      "name": "Pencil",
+      "emoji": "✏️"
+    },
+    {
+      "class": "bi bi-paintbrush",
+      "name": "Paintbrush",
+      "emoji": "🖌️"
+    },
+    {
+      "class": "bi bi-paintbrush-fill",
+      "name": "Paintbrush Fill",
+      "emoji": "🖌️"
+    },
+    {
+      "class": "bi bi-easel",
+      "name": "Easel",
+      "emoji": "🖼️"
+    },
+    {
+      "class": "bi bi-cloud",
+      "name": "Cloud",
+      "emoji": "☁️"
+    },
+    {
+      "class": "bi bi-cloud-fill",
+      "name": "Cloud Fill",
+      "emoji": "☁️"
+    },
+    {
+      "class": "bi bi-cloud-upload",
+      "name": "Cloud Upload",
+      "emoji": "☁️"
+    },
+    {
+      "class": "bi bi-cloud-upload-fill",
+      "name": "Cloud Upload Fill",
+      "emoji": "☁️"
+    },
+    {
+      "class": "bi bi-cloud-download",
+      "name": "Cloud Download",
+      "emoji": "☁️"
+    },
+    {
+      "class": "bi bi-cloud-download-fill",
+      "name": "Cloud Download Fill",
+      "emoji": "☁️"
+    },
+    {
+      "class": "bi bi-database",
+      "name": "Database",
+      "emoji": "🗄️"
+    },
+    {
+      "class": "bi bi-database-fill",
+      "name": "Database Fill",
+      "emoji": "🗄️"
+    },
+    {
+      "class": "bi bi-server",
+      "name": "Server",
+      "emoji": "🖥️"
+    },
+    {
+      "class": "bi bi-shield",
+      "name": "Shield",
+      "emoji": "🛡️"
+    },
+    {
+      "class": "bi bi-shield-fill",
+      "name": "Shield Fill",
+      "emoji": "🛡️"
+    },
+    {
+      "class": "bi bi-shield-check",
+      "name": "Shield Check",
+      "emoji": "🛡️"
+    },
+    {
+      "class": "bi bi-lock",
+      "name": "Lock",
+      "emoji": "🔒"
+    },
+    {
+      "class": "bi bi-lock-fill",
+      "name": "Lock Fill",
+      "emoji": "🔒"
+    },
+    {
+      "class": "bi bi-unlock",
+      "name": "Unlock",
+      "emoji": "🔓"
+    },
+    {
+      "class": "bi bi-unlock-fill",
+      "name": "Unlock Fill",
+      "emoji": "🔓"
+    },
+    {
+      "class": "bi bi-key",
+      "name": "Key",
+      "emoji": "🔑"
+    },
+    {
+      "class": "bi bi-key-fill",
+      "name": "Key Fill",
+      "emoji": "🔑"
+    },
+    {
+      "class": "bi bi-search",
+      "name": "Search",
+      "emoji": "🔍"
+    },
+    {
+      "class": "bi bi-filter",
+      "name": "Filter",
+      "emoji": "🔽"
+    },
+    {
+      "class": "bi bi-filter-circle",
+      "name": "Filter Circle",
+      "emoji": "🔽"
+    },
+    {
+      "class": "bi bi-chart-bar",
+      "name": "Chart Bar",
+      "emoji": "📊"
+    },
+    {
+      "class": "bi bi-chart-bar-fill",
+      "name": "Chart Bar Fill",
+      "emoji": "📊"
+    },
+    {
+      "class": "bi bi-chart-line",
+      "name": "Chart Line",
+      "emoji": "📈"
+    },
+    {
+      "class": "bi bi-chart-line-fill",
+      "name": "Chart Line Fill",
+      "emoji": "📈"
+    },
+    {
+      "class": "bi bi-graph-up",
+      "name": "Graph Up",
+      "emoji": "📈"
+    },
+    {
+      "class": "bi bi-graph-up-arrow",
+      "name": "Graph Up Arrow",
+      "emoji": "📈"
+    },
+    {
+      "class": "bi bi-graph-down",
+      "name": "Graph Down",
+      "emoji": "📉"
+    },
+    {
+      "class": "bi bi-pie-chart",
+      "name": "Pie Chart",
+      "emoji": "🥧"
+    },
+    {
+      "class": "bi bi-pie-chart-fill",
+      "name": "Pie Chart Fill",
+      "emoji": "🥧"
+    },
+    {
+      "class": "bi bi-speedometer",
+      "name": "Speedometer",
+      "emoji": "⚡"
+    },
+    {
+      "class": "bi bi-speedometer2",
+      "name": "Speedometer 2",
+      "emoji": "⚡"
+    },
+    {
+      "class": "bi bi-rocket",
+      "name": "Rocket",
+      "emoji": "🚀"
+    },
+    {
+      "class": "bi bi-rocket-fill",
+      "name": "Rocket Fill",
+      "emoji": "🚀"
+    },
+    {
+      "class": "bi bi-lightning",
+      "name": "Lightning",
+      "emoji": "⚡"
+    },
+    {
+      "class": "bi bi-lightning-fill",
+      "name": "Lightning Fill",
+      "emoji": "⚡"
+    },
+    {
+      "class": "bi bi-lightning-charge",
+      "name": "Lightning Charge",
+      "emoji": "⚡"
+    },
+    {
+      "class": "bi bi-lightning-charge-fill",
+      "name": "Lightning Charge Fill",
+      "emoji": "⚡"
+    },
+    {
+      "class": "bi bi-star",
+      "name": "Star",
+      "emoji": "⭐"
+    },
+    {
+      "class": "bi bi-star-fill",
+      "name": "Star Fill",
+      "emoji": "⭐"
+    },
+    {
+      "class": "bi bi-star-half",
+      "name": "Star Half",
+      "emoji": "⭐"
+    },
+    {
+      "class": "bi bi-heart",
+      "name": "Heart",
+      "emoji": "❤️"
+    },
+    {
+      "class": "bi bi-heart-fill",
+      "name": "Heart Fill",
+      "emoji": "❤️"
+    },
+    {
+      "class": "bi bi-thumbs-up",
+      "name": "Thumbs Up",
+      "emoji": "👍"
+    },
+    {
+      "class": "bi bi-thumbs-up-fill",
+      "name": "Thumbs Up Fill",
+      "emoji": "👍"
+    },
+    {
+      "class": "bi bi-hand-thumbs-up",
+      "name": "Hand Thumbs Up",
+      "emoji": "👍"
+    },
+    {
+      "class": "bi bi-hand-thumbs-up-fill",
+      "name": "Hand Thumbs Up Fill",
+      "emoji": "👍"
+    },
+    {
+      "class": "bi bi-hand-thumbs-down",
+      "name": "Hand Thumbs Down",
+      "emoji": "👎"
+    },
+    {
+      "class": "bi bi-hand-thumbs-down-fill",
+      "name": "Hand Thumbs Down Fill",
+      "emoji": "👎"
+    },
+    {
+      "class": "bi bi-check",
+      "name": "Check",
+      "emoji": "✅"
+    },
+    {
+      "class": "bi bi-check-lg",
+      "name": "Check Large",
+      "emoji": "✅"
+    },
+    {
+      "class": "bi bi-check-circle",
+      "name": "Check Circle",
+      "emoji": "✅"
+    },
+    {
+      "class": "bi bi-check-circle-fill",
+      "name": "Check Circle Fill",
+      "emoji": "✅"
+    },
+    {
+      "class": "bi bi-x",
+      "name": "X",
+      "emoji": "❌"
+    },
+    {
+      "class": "bi bi-x-lg",
+      "name": "X Large",
+      "emoji": "❌"
+    },
+    {
+      "class": "bi bi-x-circle",
+      "name": "X Circle",
+      "emoji": "❌"
+    },
+    {
+      "class": "bi bi-x-circle-fill",
+      "name": "X Circle Fill",
+      "emoji": "❌"
+    },
+    {
+      "class": "bi bi-alert",
+      "name": "Alert",
+      "emoji": "⚠️"
+    },
+    {
+      "class": "bi bi-alert-circle",
+      "name": "Alert Circle",
+      "emoji": "⚠️"
+    },
+    {
+      "class": "bi bi-alert-circle-fill",
+      "name": "Alert Circle Fill",
+      "emoji": "⚠️"
+    },
+    {
+      "class": "bi bi-info-circle",
+      "name": "Info Circle",
+      "emoji": "ℹ️"
+    },
+    {
+      "class": "bi bi-info-circle-fill",
+      "name": "Info Circle Fill",
+      "emoji": "ℹ️"
+    },
+    {
+      "class": "bi bi-question-circle",
+      "name": "Question Circle",
+      "emoji": "❓"
+    },
+    {
+      "class": "bi bi-question-circle-fill",
+      "name": "Question Circle Fill",
+      "emoji": "❓"
+    },
+    {
+      "class": "bi bi-help-circle",
+      "name": "Help Circle",
+      "emoji": "❓"
+    },
+    {
+      "class": "bi bi-help-circle-fill",
+      "name": "Help Circle Fill",
+      "emoji": "❓"
+    },
+    {
+      "class": "bi bi-bookmark",
+      "name": "Bookmark",
+      "emoji": "🔖"
+    },
+    {
+      "class": "bi bi-bookmark-fill",
+      "name": "Bookmark Fill",
+      "emoji": "🔖"
+    },
+    {
+      "class": "bi bi-flag",
+      "name": "Flag",
+      "emoji": "🚩"
+    },
+    {
+      "class": "bi bi-flag-fill",
+      "name": "Flag Fill",
+      "emoji": "🚩"
+    },
+    {
+      "class": "bi bi-tag",
+      "name": "Tag",
+      "emoji": "🏷️"
+    },
+    {
+      "class": "bi bi-tag-fill",
+      "name": "Tag Fill",
+      "emoji": "🏷️"
+    },
+    {
+      "class": "bi bi-tags",
+      "name": "Tags",
+      "emoji": "🏷️"
+    },
+    {
+      "class": "bi bi-tags-fill",
+      "name": "Tags Fill",
+      "emoji": "🏷️"
+    },
+    {
+      "class": "bi bi-folder",
+      "name": "Folder",
+      "emoji": "📁"
+    },
+    {
+      "class": "bi bi-folder-fill",
+      "name": "Folder Fill",
+      "emoji": "📁"
+    },
+    {
+      "class": "bi bi-folder-open",
+      "name": "Folder Open",
+      "emoji": "📂"
+    },
+    {
+      "class": "bi bi-file",
+      "name": "File",
+      "emoji": "📄"
+    },
+    {
+      "class": "bi bi-file-pdf",
+      "name": "File PDF",
+      "emoji": "📄"
+    },
+    {
+      "class": "bi bi-file-earmark",
+      "name": "File Earmark",
+      "emoji": "📄"
+    },
+    {
+      "class": "bi bi-download",
+      "name": "Download",
+      "emoji": "⬇️"
+    },
+    {
+      "class": "bi bi-download-fill",
+      "name": "Download Fill",
+      "emoji": "⬇️"
+    },
+    {
+      "class": "bi bi-upload",
+      "name": "Upload",
+      "emoji": "⬆️"
+    },
+    {
+      "class": "bi bi-upload-fill",
+      "name": "Upload Fill",
+      "emoji": "⬆️"
+    },
+    {
+      "class": "bi bi-trash",
+      "name": "Trash",
+      "emoji": "🗑️"
+    },
+    {
+      "class": "bi bi-trash-fill",
+      "name": "Trash Fill",
+      "emoji": "🗑️"
+    },
+    {
+      "class": "bi bi-pencil-square",
+      "name": "Pencil Square",
+      "emoji": "✏️"
+    },
+    {
+      "class": "bi bi-pencil-fill",
+      "name": "Pencil Fill",
+      "emoji": "✏️"
+    },
+    {
+      "class": "bi bi-save",
+      "name": "Save",
+      "emoji": "💾"
+    },
+    {
+      "class": "bi bi-save-fill",
+      "name": "Save Fill",
+      "emoji": "💾"
+    },
+    {
+      "class": "bi bi-share",
+      "name": "Share",
+      "emoji": "🔗"
+    },
+    {
+      "class": "bi bi-share-fill",
+      "name": "Share Fill",
+      "emoji": "🔗"
+    },
+    {
+      "class": "bi bi-link",
+      "name": "Link",
+      "emoji": "🔗"
+    },
+    {
+      "class": "bi bi-link-45deg",
+      "name": "Link 45°",
+      "emoji": "🔗"
+    },
+    {
+      "class": "bi bi-globe",
+      "name": "Globe",
+      "emoji": "🌍"
+    },
+    {
+      "class": "bi bi-globe2",
+      "name": "Globe 2",
+      "emoji": "🌍"
+    },
+    {
+      "class": "bi bi-map",
+      "name": "Map",
+      "emoji": "🗺️"
+    },
+    {
+      "class": "bi bi-map-fill",
+      "name": "Map Fill",
+      "emoji": "🗺️"
+    },
+    {
+      "class": "bi bi-telephone",
+      "name": "Telephone",
+      "emoji": "☎️"
+    },
+    {
+      "class": "bi bi-telephone-fill",
+      "name": "Telephone Fill",
+      "emoji": "☎️"
+    },
+    {
+      "class": "bi bi-envelope",
+      "name": "Envelope",
+      "emoji": "✉️"
+    },
+    {
+      "class": "bi bi-envelope-fill",
+      "name": "Envelope Fill",
+      "emoji": "✉️"
+    },
+    {
+      "class": "bi bi-envelope-open",
+      "name": "Envelope Open",
+      "emoji": "✉️"
+    },
+    {
+      "class": "bi bi-envelope-open-fill",
+      "name": "Envelope Open Fill",
+      "emoji": "✉️"
+    },
+    {
+      "class": "bi bi-chat",
+      "name": "Chat",
+      "emoji": "💬"
+    },
+    {
+      "class": "bi bi-chat-fill",
+      "name": "Chat Fill",
+      "emoji": "💬"
+    },
+    {
+      "class": "bi bi-chat-dots",
+      "name": "Chat Dots",
+      "emoji": "💬"
+    },
+    {
+      "class": "bi bi-chat-dots-fill",
+      "name": "Chat Dots Fill",
+      "emoji": "💬"
+    },
+    {
+      "class": "bi bi-chat-left",
+      "name": "Chat Left",
+      "emoji": "💬"
+    },
+    {
+      "class": "bi bi-chat-left-fill",
+      "name": "Chat Left Fill",
+      "emoji": "💬"
+    },
+    {
+      "class": "bi bi-bell",
+      "name": "Bell",
+      "emoji": "🔔"
+    },
+    {
+      "class": "bi bi-bell-fill",
+      "name": "Bell Fill",
+      "emoji": "🔔"
+    },
+    {
+      "class": "bi bi-bell-slash",
+      "name": "Bell Slash",
+      "emoji": "🔔"
+    },
+    {
+      "class": "bi bi-calendar",
+      "name": "Calendar",
+      "emoji": "📅"
+    },
+    {
+      "class": "bi bi-calendar-fill",
+      "name": "Calendar Fill",
+      "emoji": "📅"
+    },
+    {
+      "class": "bi bi-calendar-event",
+      "name": "Calendar Event",
+      "emoji": "📅"
+    },
+    {
+      "class": "bi bi-calendar-event-fill",
+      "name": "Calendar Event Fill",
+      "emoji": "📅"
+    },
+    {
+      "class": "bi bi-clock",
+      "name": "Clock",
+      "emoji": "🕐"
+    },
+    {
+      "class": "bi bi-clock-fill",
+      "name": "Clock Fill",
+      "emoji": "🕐"
+    },
+    {
+      "class": "bi bi-watch",
+      "name": "Watch",
+      "emoji": "⌚"
+    },
+    {
+      "class": "bi bi-hourglass",
+      "name": "Hourglass",
+      "emoji": "⏳"
+    },
+    {
+      "class": "bi bi-hourglass-end",
+      "name": "Hourglass End",
+      "emoji": "⏳"
+    },
+    {
+      "class": "bi bi-hourglass-split",
+      "name": "Hourglass Split",
+      "emoji": "⏳"
+    },
+    {
+      "class": "bi bi-arrow-right",
+      "name": "Arrow Right",
+      "emoji": "➡️"
+    },
+    {
+      "class": "bi bi-arrow-right-fill",
+      "name": "Arrow Right Fill",
+      "emoji": "➡️"
+    },
+    {
+      "class": "bi bi-arrow-right-square",
+      "name": "Arrow Right Square",
+      "emoji": "➡️"
+    },
+    {
+      "class": "bi bi-arrow-left",
+      "name": "Arrow Left",
+      "emoji": "⬅️"
+    },
+    {
+      "class": "bi bi-arrow-left-fill",
+      "name": "Arrow Left Fill",
+      "emoji": "⬅️"
+    },
+    {
+      "class": "bi bi-arrow-left-square",
+      "name": "Arrow Left Square",
+      "emoji": "⬅️"
+    },
+    {
+      "class": "bi bi-arrow-up",
+      "name": "Arrow Up",
+      "emoji": "⬆️"
+    },
+    {
+      "class": "bi bi-arrow-up-fill",
+      "name": "Arrow Up Fill",
+      "emoji": "⬆️"
+    },
+    {
+      "class": "bi bi-arrow-up-square",
+      "name": "Arrow Up Square",
+      "emoji": "⬆️"
+    },
+    {
+      "class": "bi bi-arrow-down",
+      "name": "Arrow Down",
+      "emoji": "⬇️"
+    },
+    {
+      "class": "bi bi-arrow-down-fill",
+      "name": "Arrow Down Fill",
+      "emoji": "⬇️"
+    },
+    {
+      "class": "bi bi-arrow-down-square",
+      "name": "Arrow Down Square",
+      "emoji": "⬇️"
+    },
+    {
+      "class": "bi bi-fire",
+      "name": "Fire",
+      "emoji": "🔥"
+    },
+    {
+      "class": "bi bi-water",
+      "name": "Water",
+      "emoji": "💧"
+    },
+    {
+      "class": "bi bi-person",
+      "name": "Person",
+      "emoji": "👤"
+    },
+    {
+      "class": "bi bi-person-fill",
+      "name": "Person Fill",
+      "emoji": "👤"
+    },
+    {
+      "class": "bi bi-people",
+      "name": "People",
+      "emoji": "👥"
+    },
+    {
+      "class": "bi bi-people-fill",
+      "name": "People Fill",
+      "emoji": "👥"
+    },
+    {
+      "class": "bi bi-person-plus",
+      "name": "Person Plus",
+      "emoji": "👤"
+    },
+    {
+      "class": "bi bi-person-plus-fill",
+      "name": "Person Plus Fill",
+      "emoji": "👤"
+    },
+    {
+      "class": "bi bi-person-check",
+      "name": "Person Check",
+      "emoji": "👤"
+    },
+    {
+      "class": "bi bi-person-check-fill",
+      "name": "Person Check Fill",
+      "emoji": "👤"
+    },
+    {
+      "class": "bi bi-person-x",
+      "name": "Person X",
+      "emoji": "👤"
+    },
+    {
+      "class": "bi bi-person-x-fill",
+      "name": "Person X Fill",
+      "emoji": "👤"
+    }
+  ]
+}
