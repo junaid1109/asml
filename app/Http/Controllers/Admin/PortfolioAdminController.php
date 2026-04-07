@@ -42,9 +42,11 @@ class PortfolioAdminController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'category' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'link' => 'nullable|url',
             'icon' => 'nullable|string|max:255',
             'is_active' => 'nullable|boolean',
@@ -54,6 +56,11 @@ class PortfolioAdminController extends Controller
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('portfolios', 'public');
             $validated['image'] = $path;
+        }
+
+        if ($request->hasFile('banner_image')) {
+            $path = $request->file('banner_image')->store('portfolios/banners', 'public');
+            $validated['banner_image'] = $path;
         }
 
         $validated['is_active'] = $request->has('is_active');
@@ -79,9 +86,11 @@ class PortfolioAdminController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'short_description' => 'nullable|string',
             'description' => 'nullable|string',
             'category' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'link' => 'nullable|url',
             'icon' => 'nullable|string|max:255',
             'is_active' => 'nullable|boolean',
@@ -94,6 +103,14 @@ class PortfolioAdminController extends Controller
             }
             $path = $request->file('image')->store('portfolios', 'public');
             $validated['image'] = $path;
+        }
+
+        if ($request->hasFile('banner_image')) {
+            if ($portfolio->banner_image && \Storage::disk('public')->exists($portfolio->banner_image)) {
+                \Storage::disk('public')->delete($portfolio->banner_image);
+            }
+            $path = $request->file('banner_image')->store('portfolios/banners', 'public');
+            $validated['banner_image'] = $path;
         }
 
         $validated['is_active'] = $request->has('is_active');

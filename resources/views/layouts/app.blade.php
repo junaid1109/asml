@@ -55,7 +55,7 @@
   <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/main.css') }}?v={{ time() }}" rel="stylesheet">
 
   <!-- Standardized Image Sizing -->
   <style>
@@ -485,6 +485,78 @@
         margin-top: 20px;
       }
     }
+
+    /* Portfolio Item Buttons */
+    .portfolio-item-buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-item-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .portfolio-item-btn:not([target="_blank"]) {
+      background-color: var(--accent-color);
+      color: white !important;
+    }
+
+    .portfolio-item-btn:not([target="_blank"]):hover {
+      background-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+
+    .portfolio-item-btn[target="_blank"] {
+      background-color: transparent;
+      color: var(--accent-color);
+      border: 1px solid var(--accent-color);
+    }
+
+    .portfolio-item-btn[target="_blank"]:hover {
+      background-color: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .portfolio-item-btn i {
+      margin-left: 8px;
+    }
+
+    /* Homepage Portfolio Learn More Button */
+    .learn-more-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #0d6efd;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 15px;
+    }
+
+    .learn-more-btn:hover {
+      background-color: var(--accent-color);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+    }
+
+    .learn-more-btn i {
+      margin-left: 8px;
+    }
   </style>
 
   @stack('css')
@@ -509,8 +581,8 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="{{ route('home') }}" class="@if(Route::currentRouteName() == 'home') active @endif">Home</a></li>
-            @forelse(\App\Models\Page::where('published', 1)->whereIn('display_location', ['header', 'both'])->orderBy('title')->get() as $page)
-                <li><a href="{{ route('page.show', $page) }}" class="@if(Route::currentRouteName() == 'page.show' && Route::current()->parameter('page')->id == $page->id) active @endif">{{ $page->title }}</a></li>
+            @forelse(\App\Models\Page::where('published', 1)->whereIn('display_location', ['header', 'both'])->orderBy('order')->get() as $page)
+              <li><a href="{{ route('page.show', $page) }}" class="@if(Route::currentRouteName() == $page->slug) active @endif">{{ $page->title }}</a></li>
             @empty
             @endforelse
           <li><a href="{{ route('contact.index') }}" class="@if(Route::currentRouteName() == 'contact.index') active @endif">Contact</a></li>
@@ -576,7 +648,7 @@
           <div class="col-lg-2 col-md-12 footer-links">
             <h4>Pages</h4>
             <ul>
-              @forelse(\App\Models\Page::where('published', 1)->whereIn('display_location', ['footer', 'both'])->orderBy('title')->get() as $page)
+              @forelse(\App\Models\Page::where('published', 1)->whereIn('display_location', ['footer', 'both'])->orderBy('order')->get() as $page)
                 <li><a href="{{ route('page.show', $page) }}">{{ $page->title }}</a></li>
               @empty
               @endforelse

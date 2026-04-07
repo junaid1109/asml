@@ -26,8 +26,15 @@
           </div>
 
           <div class="form-group mb-3">
+            <label>Short Description</label>
+            <input type="text" name="short_description" class="form-control @error('short_description') is-invalid @enderror" value="{{ old('short_description') }}" placeholder="Brief one-line description" maxlength="255">
+            <small class="form-text text-muted">A short description for listing pages (max 255 characters)</small>
+            @error('short_description')<span class="invalid-feedback">{{ $message }}</span>@enderror
+          </div>
+
+          <div class="form-group mb-3">
             <label>Description</label>
-            <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="4" placeholder="Project description...">{{ old('description') }}</textarea>
+            <textarea name="description" class="form-control ckeditor @error('description') is-invalid @enderror" id="descriptionEditor" placeholder="Project description...">{{ old('description') }}</textarea>
             @error('description')<span class="invalid-feedback">{{ $message }}</span>@enderror
           </div>
 
@@ -36,6 +43,13 @@
             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" accept="image/*">
             <small class="form-text text-muted">Upload a project image (JPEG, PNG, GIF, WebP)</small>
             @error('image')<span class="invalid-feedback">{{ $message }}</span>@enderror
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Banner Image</label>
+            <input type="file" name="banner_image" class="form-control @error('banner_image') is-invalid @enderror" accept="image/*">
+            <small class="form-text text-muted">Special banner image for the portfolio details page (recommended size: 1200x500px)</small>
+            @error('banner_image')<span class="invalid-feedback">{{ $message }}</span>@enderror
           </div>
 
           <div class="form-group mb-3">

@@ -109,9 +109,18 @@
           <p class="lead">{{ $aboutSection?->subtitle ?? 'We are passionate professionals.' }}</p>
           <p>{!! $aboutSection?->description ?? 'We are a team of passionate professionals.' !!}</p>
 
-          <div class="cta-section">
-            <a href="{{ $aboutSection?->button_link ?? route('about') }}" class="btn-learn-more">{{ $aboutSection?->button_text ?? 'Learn More' }}</a>
+           <div class="cta-section" id="aboutCtaSection">
+            <button class="btn btn-primary" style="border-color:black"><a href="{{ $aboutSection?->button_link ?? route('about') }}" class="btn-learn-more" style="color: #fff; text-decoration: none;">{{ $aboutSection?->button_text ?? 'Learn More' }}</a></button>
           </div>
+
+          <style>
+            @media (max-width: 768px) {
+              #aboutCtaSection {
+                text-align: center;
+                padding-bottom: 10px;
+              }
+            }
+          </style>
         </div>
       </div>
       <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
@@ -148,8 +157,8 @@
       </div>
     </div>
 
-    <div class="features-grid" data-aos="fade-up" data-aos-delay="400">
-      <div class="row g-5">
+    <div class="" data-aos="fade-up" data-aos-delay="400">
+      <div class="row">
         @forelse($features as $feature)
         <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
           <div class="feature-item">
@@ -197,7 +206,10 @@
           </div>
           @endif
           <h2>{{ $service->title }}</h2>
-          <p>{{ $service->description }}</p>
+          <p>{{ $service->short_description }}</p>
+          <a href="{{ route('portfolio.show', $service->id) }}" class="learn-more-btn">
+            Learn More <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
       </div>
       @endforeach
@@ -206,56 +218,6 @@
 </section>
 
 
-<!-- Work Process Section -->
-@php $workProcessSection = $getSection('work-process'); @endphp
-@if($workProcessSection?->is_active)
-<section id="work-process" class="work-process section">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>{{ $workProcessSection?->title ?? 'Work Process' }}</h2>
-    <p>{{ $workProcessSection?->subtitle ?? 'Our proven approach to delivering exceptional results' }}</p>
-  </div>
-
-  <div class="container" data-aos="fade-up" data-aos-delay="100">
-    @php
-      $steps = is_string($workProcessSection?->content) ? json_decode($workProcessSection->content, true) : ($workProcessSection?->content ?? []);
-    @endphp
-
-    @if(is_array($steps) && count($steps) > 0)
-    <div class="row">
-      @foreach($steps as $index => $step)
-      <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ 100 * ($index + 1) }}">
-        <div class="work-step-card" style="background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; height: 100%; display: flex; flex-direction: column;">
-          
-          @if($step['image'] ?? null)
-          <div style="width: 100%; height: 200px; overflow: hidden; border-radius: 8px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; background-color: #f8f9fa;">
-            <img src="{{ asset($step['image']) }}" alt="{{ $step['title'] ?? 'Step' }}" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-          @endif
-
-          <div style="flex: 1; display: flex; flex-direction: column;">
-            <span style="font-size: 36px; font-weight: 700; color: #667eea; margin-bottom: 10px;">{{ $step['number'] ?? ($index + 1) }}</span>
-            <h3 style="margin-bottom: 15px; color: #333;">{{ $step['title'] ?? 'Step ' . ($index + 1) }}</h3>
-            <p style="color: #666; flex-grow: 1;">{{ $step['description'] ?? '' }}</p>
-
-            @if($step['features'] ?? null)
-            <div style="margin-top: 15px; text-align: left;">
-              @foreach($step['features'] as $feature)
-              <div style="margin-bottom: 8px;">
-                <i class="{{ $feature['icon'] ?? 'bi-check-circle' }}" style="color: #667eea; margin-right: 8px;"></i>
-                <span style="color: #555;">{{ $feature['text'] ?? '' }}</span>
-              </div>
-              @endforeach
-            </div>
-            @endif
-          </div>
-        </div>
-      </div>
-      @endforeach
-    </div>
-    @endif
-  </div>
-</section>
-@endif
 
 <!-- Call To Action Section -->
 @if($getSection('call-to-action')?->is_active)

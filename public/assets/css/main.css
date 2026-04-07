@@ -979,10 +979,7 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
-.about {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
+
 
 .about .content h2 {
   font-size: 42px;
@@ -1007,10 +1004,14 @@ section,
 }
 
 .about .content p {
-  font-size: 16px;
+  /* font-size: 16px;
   line-height: 1.8;
   margin-bottom: 25px;
-  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  color: color-mix(in srgb, var(--default-color), transparent 25%); */
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
 }
 
 .about .stats-row {
@@ -1168,6 +1169,91 @@ section,
   .about .stats-row {
     justify-content: center;
   }
+}
+
+/* Styling for CKEditor content with lists */
+.about-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+}
+
+.about-content ul,
+.about-content ol {
+  margin-left: 25px;
+  margin-bottom: 20px;
+  list-style-position: outside;
+}
+
+.about-content ul {
+  list-style-type: disc;
+}
+
+.about-content ol {
+  list-style-type: decimal;
+}
+
+.about-content li {
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.about-content h1,
+.about-content h2,
+.about-content h3,
+.about-content h4,
+.about-content h5,
+.about-content h6 {
+  font-family: var(--heading-font);
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.about-content p {
+  margin-bottom: 15px;
+}
+
+.about-content blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding-left: 20px;
+  margin: 20px 0;
+  font-style: italic;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+}
+
+.about-content code {
+  background-color: color-mix(in srgb, var(--default-color), transparent 90%);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.about-content pre {
+  background-color: color-mix(in srgb, var(--default-color), transparent 90%);
+  padding: 15px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+}
+
+.about-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.about-content table th,
+.about-content table td {
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  padding: 12px;
+  text-align: left;
+}
+
+.about-content table th {
+  background-color: color-mix(in srgb, var(--default-color), transparent 5%);
+  font-weight: 600;
 }
 
 /*--------------------------------------------------------------

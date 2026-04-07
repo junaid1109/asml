@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (\Illuminate\Support\Facades\Auth::guard($guard)->check()) {
-                return redirect('/home');
+                return redirect('admin/dashboard');
             }
         }
 

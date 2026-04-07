@@ -43,6 +43,13 @@
           </div>
 
           <div class="form-group">
+            <label>Display Order</label>
+            <input type="number" name="order" class="form-control @error('order') is-invalid @enderror" value="{{ old('order', $page->order) }}" min="0" placeholder="0">
+            <small class="form-text text-muted">Pages with lower order values appear first on the frontend</small>
+            @error('order')<span class="invalid-feedback">{{ $message }}</span>@enderror
+          </div>
+
+          <div class="form-group">
             <label>Content *</label>
             <textarea id="content-editor" name="content" class="form-control @error('content') is-invalid @enderror" rows="10">{{ old('content', $page->content) }}</textarea>
             <div id="content-error" class="invalid-feedback" style="display: none;">Content is required</div>

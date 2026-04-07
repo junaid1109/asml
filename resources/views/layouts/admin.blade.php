@@ -490,63 +490,108 @@
   <!-- Scripts -->
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-  <!-- CKEditor 5 Classic -->
+  <!-- CKEditor 5 -->
   <script src="https://cdn.ckeditor.com/ckeditor5/41.0.0/classic/ckeditor.js"></script>
 
   <!-- CKEditor Initialization -->
   <script>
+    // Custom SimpleUpload adapter for CKEditor 5
+    class SimpleUploadAdapter {
+      constructor(loader, uploadUrl, csrfToken) {
+        this.loader = loader;
+        this.uploadUrl = uploadUrl;
+        this.csrfToken = csrfToken;
+      }
+
+      upload() {
+        return this.loader.file.then(file => {
+          return new Promise((resolve, reject) => {
+            const formData = new FormData();
+            formData.append('upload', file);
+
+            fetch(this.uploadUrl, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'X-CSRF-TOKEN': this.csrfToken
+              }
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.uploaded) {
+                resolve({
+                  default: data.url
+                });
+              } else {
+                reject(data.error ? data.error.message : 'Upload failed');
+              }
+            })
+            .catch(error => reject(error));
+          });
+        });
+      }
+
+      abort() {
+        // Handle abort
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
-      
-      // Initialize CKEditor for all elements with class 'ckeditor'
       const ckeditorElements = document.querySelectorAll('.ckeditor');
+      const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
       const editors = {};
       
       ckeditorElements.forEach(function(element) {
-        ClassicEditor
-          .create(element, {
+        ClassicEditor.create(element, {
+          toolbar: [
+            'heading', '|',
+            'bold', 'italic', 'underline', 'strikethrough', '|',
+            'bulletedList', 'numberedList', '|',
+            'alignment', '|',
+            'blockQuote', 'insertTable', '|',
+            'link', 'imageUpload', '|',
+            'undo', 'redo'
+          ],
+          alignment: {
+            options: [ 'left', 'center', 'right', 'justify' ]
+          },
+          image: {
             toolbar: [
-              'heading', '|',
-              'bold', 'italic', 'underline', 'strikethrough', '|',
-              'bulletedList', 'numberedList', '|',
-              'alignment', '|',
-              'blockQuote', 'insertTable', '|',
-              'link', 'imageUpload', '|',
-              'undo', 'redo'
+              'toggleImageCaption',
+              'imageTextAlternative', 
+              '|',
+              'imageStyle:block',
+              'imageStyle:side',
+              'imageStyle:inline',
+              '|',
+              'imageStyle:alignLeft',
+              'imageStyle:alignCenter',
+              'imageStyle:alignRight'
             ],
-            alignment: {
-              options: [ 'left', 'center', 'right', 'justify' ]
-            },
-            image: {
-              toolbar: [
-                'toggleImageCaption',
-                'imageTextAlternative', 
-                '|',
-                'imageStyle:block',
-                'imageStyle:side',
-                'imageStyle:inline',
-                '|',
-                'imageStyle:alignLeft',
-                'imageStyle:alignCenter',
-                'imageStyle:alignRight'
-              ],
-              caption: {
-                placeholderText: 'Enter image caption'
-              }
+            caption: {
+              placeholderText: 'Enter image caption'
             }
-          })
-          .then(editor => {
-            editors[element.id] = editor;
-            // Update hidden textarea on editor change
-            editor.model.document.on('change:data', () => {
-              element.value = editor.getData();
-            });
-          })
-          .catch(error => {
-            console.error('CKEditor initialization error:', error);
+          }
+        })
+        .then(editor => {
+          // Register the custom upload adapter
+          editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+            return new SimpleUploadAdapter(loader, '/admin/upload-image', csrfToken);
+          };
+
+          editors[element.id] = editor;
+          
+          // Update textarea on editor change
+          editor.model.document.on('change:data', () => {
+            element.value = editor.getData();
           });
+        })
+        .catch(error => {
+          console.error('CKEditor error:', error);
+        });
       });
 
-      // Handle form submission to sync CKEditor content with textareas
+      // Handle form submission
       const forms = document.querySelectorAll('form');
       forms.forEach(form => {
         form.addEventListener('submit', function(e) {

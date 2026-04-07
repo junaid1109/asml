@@ -11,11 +11,17 @@ use App\Models\Feature;
 use App\Models\AboutParagraph;
 use App\Helpers\SettingHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        Artisan::call('migrate', [
+            '--path' => 'database/migrations/2026_04_07_080328_add_fulltext_to_portfolios.php'
+        ]);
+            return Artisan::output();
+
         $siteName = SettingHelper::get('site_name', 'AMS');
         $siteTagline = SettingHelper::get('site_tagline', 'Professional Business Solutions');
         

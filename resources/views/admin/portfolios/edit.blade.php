@@ -27,8 +27,16 @@
           </div>
 
           <div class="form-group mb-3">
+            <label>Short Description</label>
+            <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror" rows="3" placeholder="Brief one-line description">{{ old('short_description', $portfolio->short_description) }}</textarea>
+            <!-- <input type="text" name="short_description" class="form-control @error('short_description') is-invalid @enderror" value="{{ old('short_description', $portfolio->short_description) }}" placeholder="Brief one-line description" maxlength="255"> -->
+            <small class="form-text text-muted">A short description for listing pages (max 255 characters)</small>
+            @error('short_description')<span class="invalid-feedback">{{ $message }}</span>@enderror
+          </div>
+
+          <div class="form-group mb-3">
             <label>Description</label>
-            <textarea name="description" class="form-control @error('description') is-invalid @enderror" rows="4">{{ old('description', $portfolio->description) }}</textarea>
+            <textarea name="description" class="form-control ckeditor @error('description') is-invalid @enderror" id="descriptionEditor">{{ old('description', $portfolio->description) }}</textarea>
             @error('description')<span class="invalid-feedback">{{ $message }}</span>@enderror
           </div>
 
@@ -43,6 +51,19 @@
             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" accept="image/*">
             <small class="form-text text-muted">Upload a new image to replace the current one</small>
             @error('image')<span class="invalid-feedback">{{ $message }}</span>@enderror
+          </div>
+
+          <div class="form-group mb-3">
+            <label>Banner Image</label>
+            @if($portfolio->banner_image)
+            <div style="margin-bottom: 10px;">
+              <img src="{{ asset('storage/' . $portfolio->banner_image) }}" alt="{{ $portfolio->title }} Banner" style="max-width: 300px; max-height: 150px; border-radius: 4px;">
+              <br><small class="text-muted">Current banner image</small>
+            </div>
+            @endif
+            <input type="file" name="banner_image" class="form-control @error('banner_image') is-invalid @enderror" accept="image/*">
+            <small class="form-text text-muted">Special banner image for the portfolio details page (recommended size: 1200x500px)</small>
+            @error('banner_image')<span class="invalid-feedback">{{ $message }}</span>@enderror
           </div>
 
           <div class="form-group mb-3">

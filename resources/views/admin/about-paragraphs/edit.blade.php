@@ -27,8 +27,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="details" class="form-label">Details <span class="text-danger">*</span></label>
-                    <textarea class="form-control editor @error('details') is-invalid @enderror" id="details" name="details" required>{{ old('details', $aboutParagraph->details) }}</textarea>
+                    <label for="content-editor" class="form-label">Details <span class="text-danger">*</span></label>
+                    <textarea class="form-control @error('details') is-invalid @enderror" id="content-editor" name="details" required>{{ old('details', $aboutParagraph->details) }}</textarea>
+                    <div id="content-error" class="invalid-feedback" style="display: none;">Details is required</div>
                     @error('details')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
@@ -56,27 +57,113 @@
 
 <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5-super-build.js"></script>
 <script>
-    const editors = {};
-    document.querySelectorAll('.editor').forEach(el => {
-        CKEDITOR.SuperBuild
-            .create(el, {
-                toolbar: {
-                    items: [
-                        'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'outdent', 'indent'
-                    ]
-                },
-                heading: {
-                    options: [
-                        { model: 'paragraph', title: 'Paragraph' },
-                        { model: 'heading2', view: 'h2', title: 'Heading 2' },
-                        { model: 'heading3', view: 'h3', title: 'Heading 3' }
-                    ]
-                }
-            })
+    let contentEditor;
+
+    class CustomUploadAdapter {
+        constructor(loader) {
+            this.loader = loader;
+        }
+
+        upload() {
+            return this.loader.file.then(file => new Promise((resolve, reject) => {
+                const formData = new FormData();
+                formData.append('upload', file);
+                formData.append('_token', document.querySelector('meta[name="csrf-token"]').content);
+
+                fetch('{{ route("admin.upload.image") }}', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.url) {
+                            resolve({ default: data.url });
+                        } else {
+                            reject('Upload failed');
+                        }
+                    })
+                    .catch(error => reject(error));
+            }));
+        }
+
+        abort() {
+            // Abort upload
+        }
+    }
+
+    // Wait for CKEditor to load
+    function initializeEditor() {
+        if (typeof window.ClassicEditor === 'undefined') {
+            setTimeout(initializeEditor, 100);
+            return;
+        }
+
+        ClassicEditor.create(document.querySelector('#content-editor'), {
+            toolbar: {
+                items: [
+                    'heading', '|',
+                    'bold', 'italic', 'underline', 'strikethrough', '|',
+                    'bulletedList', 'numberedList', '|',
+                    'link', 'imageUpload', 'blockQuote', 'codeBlock', '|',
+                    'insertTable', '|',
+                    'undo', 'redo'
+                ]
+            },
+            heading: {
+                options: [
+                    { model: 'paragraph', title: 'Paragraph' },
+                    { model: 'heading1', view: 'h1', title: 'Heading 1' },
+                    { model: 'heading2', view: 'h2', title: 'Heading 2' },
+                    { model: 'heading3', view: 'h3', title: 'Heading 3' }
+                ]
+            },
+            image: {
+                toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|', 'imageStyle:full', 'imageStyle:side'],
+                styles: [
+                    'full',
+                    'side',
+                    'alignLeft',
+                    'alignCenter',
+                    'alignRight'
+                ]
+            }
+        })
             .then(editor => {
-                editors[el.id] = editor;
+                contentEditor = editor;
+                editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                    return new CustomUploadAdapter(loader);
+                };
             })
-            .catch(error => console.error(error));
+            .catch(err => console.error('Content Editor:', err));
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeEditor);
+    } else {
+        initializeEditor();
+    }
+
+    // Sync editor data back to textarea before form submission
+    document.querySelector('form').addEventListener('submit', function(e) {
+        if (contentEditor) {
+            const content = contentEditor.getData();
+            document.querySelector('#content-editor').value = content;
+            
+            // Validate content is not empty
+            if (!content || content.trim() === '') {
+                e.preventDefault();
+                document.getElementById('content-error').style.display = 'block';
+                document.querySelector('.mb-3').classList.add('has-error');
+                return false;
+            } else {
+                document.getElementById('content-error').style.display = 'none';
+                document.querySelector('.mb-3').classList.remove('has-error');
+            }
+        }
     });
 </script>
 @endsection

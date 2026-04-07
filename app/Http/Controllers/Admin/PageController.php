@@ -22,7 +22,7 @@ class PageController extends \App\Http\Controllers\Controller
 
     public function index()
     {
-        $pages = Page::latest()->paginate(10);
+        $pages = Page::orderBy('order')->latest('updated_at')->paginate(10);
         return view('admin.pages.index', compact('pages'));
     }
 
@@ -41,6 +41,7 @@ class PageController extends \App\Http\Controllers\Controller
             'meta_keywords' => 'nullable|string',
             'page_type' => 'nullable|string',
             'display_location' => 'nullable|string',
+            'order' => 'nullable|integer|min:0',
             'published' => 'boolean',
         ]);
 
@@ -51,6 +52,7 @@ class PageController extends \App\Http\Controllers\Controller
 
         $validated['slug'] = Str::slug($validated['title']);
         $validated['published'] = $request->has('published');
+        $validated['order'] = $validated['order'] ?? 0;
 
         Page::create($validated);
 
@@ -72,6 +74,7 @@ class PageController extends \App\Http\Controllers\Controller
             'meta_keywords' => 'nullable|string',
             'page_type' => 'nullable|string',
             'display_location' => 'nullable|string',
+            'order' => 'nullable|integer|min:0',
             'published' => 'boolean',
         ]);
 

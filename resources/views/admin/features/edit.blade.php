@@ -47,8 +47,8 @@
 
                 <div class="mb-3">
                     <label for="display_order" class="form-label">Display Order</label>
-                    <input type="number" class="form-control @error('display_order') is-invalid @enderror" id="display_order" name="display_order" value="{{ old('display_order', $feature->display_order) }}">
-                    @error('display_order')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    <input type="number" class="form-control @error('order') is-invalid @enderror" id="display_order" name="order" value="{{ old('order', $feature->order) }}">
+                    @error('order')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
                 <div class="mb-3 form-check">

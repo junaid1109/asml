@@ -12,19 +12,30 @@
     }
     return $default;
   };
+
+  $currentMenu = \App\Models\Menu::getCurrentPageMenu();
+  $pageTitle = $currentMenu?->label ?? 'Portfolio';
+  $breadcrumbs = \App\Models\Menu::getBreadcrumbs();
+
 @endphp
 
 <!-- Portfolio Hero Section -->
-<section id="portfolio-hero" class="hero section light-background" style="padding: 60px 0;">
-  <div class="container" data-aos="fade-up">
-    <div class="row align-items-center">
-      <div class="col-lg-12">
-        <div class="hero-content text-center">
-          <h1 data-aos="fade-up">Our Portfolio</h1>
-          <p data-aos="fade-up" data-aos-delay="100">Explore our latest projects and see how we transform ideas into successful outcomes.</p>
-        </div>
-      </div>
-    </div>
+
+
+<section class="page-title light-background" style="padding-top: 100px; padding-bottom: 60px;">
+  <div class="container">
+    <h1>{{ $pageTitle }}</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        @foreach($breadcrumbs as $breadcrumb)
+          @if($breadcrumb['url'])
+          <li class="breadcrumb-item"><a href="{{ $breadcrumb['url'] }}">{{ $breadcrumb['label'] }}</a></li>
+          @else
+          <li class="breadcrumb-item active">{{ $breadcrumb['label'] }}</li>
+          @endif
+        @endforeach
+      </ol>
+    </nav>
   </div>
 </section>
 
@@ -41,6 +52,10 @@
     </div>
     @else
     <div class="row">
+      @php
+         $page = \App\Models\Page::where('slug', 'portfolio')->first();
+      @endphp
+      {!! $page?->content !!}
       @foreach($portfolios as $portfolio)
       <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in">
         <div class="portfolio-item card h-100 shadow-sm">
@@ -61,15 +76,13 @@
             <p class="portfolio-item-category">{{ $portfolio->category }}</p>
             @endif
             <h5 class="portfolio-item-title">{{ $portfolio->title }}</h5>
-            @if($portfolio->description)
-            <p class="portfolio-item-desc">{{ Str::limit($portfolio->description, 100) }}</p>
+            @if($portfolio->short_description)
+            <p class="portfolio-item-desc">{{ Str::limit($portfolio->short_description, 100) }}</p>
             @endif
             
-            @if($portfolio->link)
-            <a href="{{ $portfolio->link }}" target="_blank" class="portfolio-item-btn">
-              View Project <i class="bi bi-arrow-right"></i>
+            <a href="{{ route('portfolio.show', $portfolio->id) }}" class="learn-more-btn">
+              Learn More <i class="bi bi-arrow-right"></i>
             </a>
-            @endif
           </div>
         </div>
       </div>

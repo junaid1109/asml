@@ -16,6 +16,7 @@
         <table class="table">
           <thead>
             <tr>
+              <th>Order</th>
               <th>Title</th>
               <th>Slug</th>
               <th>Type</th>
@@ -27,6 +28,7 @@
           <tbody>
             @foreach($pages as $page)
             <tr>
+              <td><strong>{{ $page->order }}</strong></td>
               <td>{{ $page->title }}</td>
               <td>{{ $page->slug }}</td>
               <td>{{ $page->page_type }}</td>

@@ -28,6 +28,9 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-        return $this->index();
+        $portfolio = Portfolio::where('is_active', true)->findOrFail($id);
+        $siteName = \App\Helpers\SettingHelper::get('site_name', 'AMS');
+        
+        return view('frontend.portfolio.show', compact('portfolio', 'siteName'));
     }
 }

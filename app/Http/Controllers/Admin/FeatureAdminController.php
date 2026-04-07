@@ -11,7 +11,7 @@ class FeatureAdminController extends Controller
 {
     public function index()
     {
-        $features = Feature::orderBy('display_order')->get();
+        $features = Feature::orderBy('order')->get();
         return view('admin.features.index', compact('features'));
     }
 
@@ -26,8 +26,8 @@ class FeatureAdminController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'icon_file' => 'nullable|image|mimes:jpeg,png,gif,webp|max:2048',
-            'display_order' => 'nullable|integer',
-            'is_active' => 'nullable|boolean'
+            'order' => 'nullable|integer',
+            'published' => 'nullable|boolean'
         ]);
 
         // Handle file upload
@@ -35,7 +35,7 @@ class FeatureAdminController extends Controller
             $validated['icon_file'] = $request->file('icon_file')->store('features', 'public');
         }
 
-        $validated['is_active'] = $request->has('is_active');
+        $validated['published'] = $request->has('published');
 
         Feature::create($validated);
 
@@ -53,8 +53,8 @@ class FeatureAdminController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'icon_file' => 'nullable|image|mimes:jpeg,png,gif,webp|max:2048',
-            'display_order' => 'nullable|integer',
-            'is_active' => 'nullable|boolean'
+            'order' => 'nullable|integer',
+            'published' => 'nullable|boolean'
         ]);
 
         // Handle file upload
@@ -66,7 +66,7 @@ class FeatureAdminController extends Controller
             $validated['icon_file'] = $request->file('icon_file')->store('features', 'public');
         }
 
-        $validated['is_active'] = $request->has('is_active');
+        $validated['published'] = $request->has('published');
 
         $feature->update($validated);
 

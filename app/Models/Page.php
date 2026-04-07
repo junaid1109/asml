@@ -19,6 +19,7 @@ class Page extends Model
         'published',
         'page_type',
         'display_location',
+        'order',
     ];
 
     protected $casts = [
